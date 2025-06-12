@@ -648,6 +648,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import jsQR from 'jsqr';
+import '../styles/App.css'; // Import your CSS styles
 
 const QRScanner = () => {
   const webcamRef = useRef(null);
