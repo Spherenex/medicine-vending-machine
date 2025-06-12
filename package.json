@@ -14,7 +14,7 @@
     "jsqr": "^1.4.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-qr-reader": "^3.0.0-beta-1",
+    "react-qr-reader": "^2.2.1",
     "react-webcam": "^7.2.0"
   },
   "devDependencies": {
