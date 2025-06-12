@@ -1,0 +1,266 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dolo 650 Prescription</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body style="text-align: center; font-family: Arial; margin-top: 50px;">
+
+  <h2>Dolo 650 Prescription</h2>
+  <p><strong>Tablet:</strong> Dolo 650</p>
+  <p><strong>Dosage:</strong> 1 tablet every 6 hours</p>
+
+  <button onclick="payNow()" style="padding: 12px 24px; font-size: 18px; margin-top: 20px;">Pay Now</button>
+
+  <script>
+    // Replace this config with your actual Firebase project config
+    var firebaseConfig = {
+      apiKey: "AIzaSyB9ererNsNonAzH0zQo_GS79XPOyCoMxr4",
+  authDomain: "waterdtection.firebaseapp.com",
+  databaseURL: "https://waterdtection-default-rtdb.firebaseio.com",
+  projectId: "waterdtection",
+  storageBucket: "waterdtection.firebasestorage.app",
+  messagingSenderId: "690886375729",
+  appId: "1:690886375729:web:172c3a47dda6585e4e1810",
+  measurementId: "G-TXF33Y6XY0"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+
+    function payNow() {
+      database.ref("Vending_Machine").update({
+        Status: "1"
+      }).then(() => {
+        alert("Payment successful! Vending command sent.");
+      }).catch((error) => {
+        alert("Error: " + error.message);
+      });
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dolo 650 Prescription</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    
+    .prescription-info {
+      text-align: left;
+      margin: 20px 0;
+      padding: 15px;
+      border-left: 4px solid #3498db;
+      background-color: #f8f9fa;
+    }
+    
+    .medication-details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .medication-details div {
+      width: 48%;
+      margin-bottom: 15px;
+    }
+    
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin-top: 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .dispense-section {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #e8f4fd;
+      border-radius: 8px;
+    }
+    
+    .status-message {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Dolo 650 Prescription</h2>
+    
+    <div class="prescription-info">
+      <div class="medication-details">
+        <div>
+          <strong>Medication:</strong> Dolo 650 (Paracetamol)
+        </div>
+        <div>
+          <strong>Dosage:</strong> 2 tablet every day
+        </div>
+        <div>
+          <strong>Duration:</strong> 3 days
+        </div>
+        <div>
+          <strong>Quantity:</strong> 6 tablets  3rs per tablet 
+        </div>
+        <div>
+          <strong>Total:</strong> 18Rs
+        </div>
+      </div>
+      
+      <p><strong>Instructions:</strong> Take with water after meals. Do not exceed the prescribed dose.</p>
+      
+      <p><strong>Side Effects:</strong> May cause nausea, indigestion, or allergic reactions in rare cases.</p>
+      
+      <p><strong>Precautions:</strong> Not recommended for patients with liver disease. Consult doctor if symptoms persist after 3 days.</p>
+    </div>
+    
+    <button id="payButton" onclick="payNow()">Pay Now</button>
+    
+    <div id="dispenseSection" class="dispense-section">
+      <h3>Payment Complete</h3>
+      <p>Your payment has been processed successfully.</p>
+      <p>Please collect your medication from the vending machine by clicking the button below:</p>
+      <button onclick="dispenseMedicine()">Dispense Medicine</button>
+    </div>
+    
+    <div id="statusMessage" class="status-message" style="display: none;"></div>
+  </div>
+
+  <script>
+    // Replace this config with your actual Firebase project config
+    var firebaseConfig = {
+      apiKey: "AIzaSyB9ererNsNonAzH0zQo_GS79XPOyCoMxr4",
+      authDomain: "waterdtection.firebaseapp.com",
+      databaseURL: "https://waterdtection-default-rtdb.firebaseio.com",
+      projectId: "waterdtection",
+      storageBucket: "waterdtection.firebasestorage.app",
+      messagingSenderId: "690886375729",
+      appId: "1:690886375729:web:172c3a47dda6585e4e1810",
+      measurementId: "G-TXF33Y6XY0"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    
+    function showStatus(message, isSuccess) {
+      var statusElement = document.getElementById("statusMessage");
+      statusElement.innerHTML = message;
+      statusElement.style.display = "block";
+      
+      if (isSuccess) {
+        statusElement.className = "status-message success";
+      } else {
+        statusElement.className = "status-message error";
+      }
+      
+      // Auto-hide the message after 5 seconds
+      setTimeout(function() {
+        statusElement.style.display = "none";
+      }, 5000);
+    }
+
+    function payNow() {
+      // Disable the pay button to prevent multiple clicks
+      document.getElementById("payButton").disabled = true;
+      
+      database.ref("Vending_Machine").update({
+        PaymentStatus: "1"
+      }).then(() => {
+        // Show success message
+        showStatus("Payment successful! You can now dispense your medicine.", true);
+        
+        // Show the dispense section
+        document.getElementById("dispenseSection").style.display = "block";
+        
+        // Hide the pay button
+        document.getElementById("payButton").style.display = "none";
+      }).catch((error) => {
+        // Show error message
+        showStatus("Payment Error: " + error.message, false);
+        
+        // Re-enable the pay button
+        document.getElementById("payButton").disabled = false;
+      });
+    }
+    
+    function dispenseMedicine() {
+      // Disable the dispense button to prevent multiple clicks
+      document.querySelector("#dispenseSection button").disabled = true;
+      
+      database.ref("Vending_Machine").update({
+        Status: "1"
+      }).then(() => {
+        // Show success message
+        showStatus("Medicine dispensing... Please collect your medication from the vending tray.", true);
+        
+        // After 3 seconds, show final success message
+        setTimeout(function() {
+          showStatus("Dispensing complete! Thank you for using our service.", true);
+          
+          // Disable the dispense button permanently
+          document.querySelector("#dispenseSection button").innerHTML = "Dispensed";
+          document.querySelector("#dispenseSection h3").innerHTML = "Prescription Fulfilled";
+        }, 3000);
+      }).catch((error) => {
+        // Show error message
+        showStatus("Dispensing Error: " + error.message, false);
+        
+        // Re-enable the dispense button
+        document.querySelector("#dispenseSection button").disabled = false;
+      });
+    }
+  </script>
+</body>
+</html>

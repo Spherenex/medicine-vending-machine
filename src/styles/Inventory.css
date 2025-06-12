@@ -1,0 +1,163 @@
+/* Inventory.css */
+.inventory-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.inventory-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.inventory-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.inventory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.medicine-icon {
+  font-size: 40px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.stock-count {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #2c3e50;
+}
+
+.status-indicator {
+  color: #27ae60;
+  font-weight: 500;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.restock-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.restock-button:hover {
+  background-color: #2980b9;
+}
+
+.dispense-controls {
+  margin-top: 30px;
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dispense-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.reset-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: #c0392b;
+}
+
+.current-status {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.dispense-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dispense-button:hover {
+  background-color: #219653;
+}
+
+.dispense-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.status-description {
+  font-size: 15px;
+  color: #34495e;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.update-message {
+  background-color: #2ecc71;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.inventory-error {
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
